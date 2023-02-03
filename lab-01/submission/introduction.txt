@@ -9,7 +9,7 @@ Errors:
 
 3. Remove the first quotation mark in the string
     - "'An' cannot be resolved to a variable"...
-    - "An" is treated as an identifer because there is no double-quote, error thrown becuase "An" is not a declared variable
+    - "An" is treated as an identifier because there is no double-quote, error thrown because "An" is not a declared variable
 
 4. Remove the last quotation mark in the string.
     - "String literal is not properly closed by a double-quote"
