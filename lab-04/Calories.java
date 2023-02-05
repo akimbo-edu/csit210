@@ -12,15 +12,19 @@ public class Calories {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("Input cookies eaten:");
-        
+        String msg = "Input cookies eaten: ";
+
+        System.out.print(msg);
+        while (!scanner.hasNextInt()) {
+            System.out.print(msg);
+            scanner.nextLine();
+        }
+    
         int cookiesEaten = scanner.nextInt();
         double caloriesConsumed = cookiesEaten * caloriesPerCookie;
-        System.out.println(caloriesConsumed);
+        System.out.println(String.format("You've consumed %,.2f calories.", caloriesConsumed));
         
         scanner.close();
     }
 
 }
-    
