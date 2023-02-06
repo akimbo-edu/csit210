@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Budget {
 
+    /*
+     * Budget object fields and methods
+     */
+
     private String name;
     private double startBal;
     private Map<String, Double> expenses;
@@ -32,6 +36,10 @@ public class Budget {
         return out;
     }
 
+    /*
+     * Main class methods
+     */
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
@@ -53,16 +61,16 @@ public class Budget {
     private static String getString(Scanner sc, String msg) {
         String input = "";
         while (input.isEmpty()) {
-            System.out.print(msg);
+            System.out.println(msg);
             input = sc.nextLine();
         }
         return input;
     }
 
     private static double getDouble(Scanner sc, String msg) {
-        System.out.print(msg);
+        System.out.println(msg);
         while (!sc.hasNextDouble()) {
-            System.out.print(msg);
+            System.out.println(msg);
             sc.next();
         }
         return sc.nextDouble();
