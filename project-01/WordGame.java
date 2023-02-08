@@ -14,9 +14,14 @@ public class WordGame {
 
         sc.close();
 
-        System.out.println(String.format(
-                "There once was a person named %s who lived in a %s. At the age of %s, %s went to college at %s. %s graduated and went to work as a %s. Then, %s adopted a %s named %s. They both lived happily ever after!",
-                name, city, age, name, college, name, profession, name, animal, petName));
+        String story = "There once was a person named %s who lived in a %s. " +
+                "At the age of %s, %s went to college at %s. " +
+                "%s graduated and went to work as a %s. " +
+                "Then, %s adopted a %s named %s. " +
+                "They both lived happily ever after!\n";
+
+        System.out.printf(story, name, city, age, name, college,
+                name, profession, name, animal, petName);
     }
 
     private static String getInput(Scanner sc, String msg) {
