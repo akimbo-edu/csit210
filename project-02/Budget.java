@@ -7,6 +7,16 @@ public class Budget {
     /*
      * Budget object fields and methods
      */
+    private static final String ENTRY_TEMPLATE = """
+            %s: -$%.2f
+            Remaining Balance: $%.2f\n
+            """;
+    private static final String STRING_TEMPLATE = """
+            %s
+            Monthly Budget\n
+            Starting Balance: $%.2f\n
+            %sFinal Balance: $%.2f
+            """;
 
     private String name;
     private double startBal;
@@ -24,16 +34,18 @@ public class Budget {
 
     @Override
     public String toString() {
-        String out = this.name + "\nMonthly Budget\n\n";
-        out += String.format("Starting Balance: $%.2f\n\n", this.startBal);
+        String entries = "";
+
         double remainingBal = this.startBal;
         for (var entry : this.expenses.entrySet()) {
-            out += String.format("%s: -$%.2f\n", entry.getKey(), entry.getValue());
+            String k = entry.getKey();
+            double v = entry.getValue();
             remainingBal -= entry.getValue();
-            out += String.format("Remaining Balance: $%.2f\n\n", remainingBal);
+            entries += String.format(ENTRY_TEMPLATE, k, v, remainingBal);
         }
-        out += String.format("Final Balance: $%.2f", remainingBal);
-        return out;
+
+        return String.format(STRING_TEMPLATE,
+                this.name, this.startBal, entries, remainingBal);
     }
 
     /*
@@ -42,12 +54,12 @@ public class Budget {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
+
         String name = getString(sc, "Name: ");
         double startBal = getDouble(sc, "Starting Balance: ");
         Budget budget = new Budget(name, startBal);
 
-        for (int i = 0; i < 3; i ++) {
+        for (int i = 0; i < 3; i++) {
             String entry = getString(sc, "Entry Name: ");
             Double cost = getDouble(sc, "Cost: ");
             budget.addEntry(entry, cost);
